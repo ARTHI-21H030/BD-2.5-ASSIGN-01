@@ -230,17 +230,17 @@ let products = [
 
 app.get('/products/sort/popularity', (req, res) => {
   let sortedProducts = products.sort((a, b) => b.rating - a.rating);
-  res.json(sortedProducts);
+  res.json({products:sortedProducts});
 });
 
 app.get('/products/sort/price-high-to-low', (req, res) => {
   let sortedProducts = products.sort((a, b) => b.price - a.price);
-  res.json(sortedProducts);
+  res.json({products:sortedProducts});
 });
 
 app.get('/products/sort/price-low-to-high', (req, res) => {
   let sortedProducts = products.sort((a, b) => a.price - b.price);
-  res.json(sortedProducts);
+  res.json({products:sortedProducts});
 });
 
 function filterByRam(ram) {
@@ -250,7 +250,7 @@ function filterByRam(ram) {
 app.get('/products/filter/ram', (req, res) => {
   let ram = req.query.ram;
   let filteredProducts = filterByRam(ram);
-  res.json(filteredProducts);
+  res.json({products:filteredProducts});
 });
 
 function filterByRom(rom) {
@@ -260,7 +260,7 @@ function filterByRom(rom) {
 app.get('/products/filter/rom', (req, res) => {
   let rom = req.query.rom;
   let filteredProducts = filterByRom(rom);
-  res.json(filteredProducts);
+  res.json({products:filteredProducts});
 });
 
 function filterByBrand(brand) {
@@ -271,7 +271,7 @@ function filterByBrand(brand) {
 app.get('/products/filter/brand', (req, res) => {
   let brand = req.query.brand;
   let filteredProducts = filterByBrand(brand);
-  res.json(filteredProducts);
+  res.json({products:filteredProducts});
 });
 
 function filterByOs(os) {
@@ -282,7 +282,7 @@ function filterByOs(os) {
 app.get('/products/filter/os', (req, res) => {
   let os = req.query.os;
   let filteredProducts = filterByOs(os);
-  res.json(filteredProducts);
+  res.json({products:filteredProducts});
 });
 
 function filterByPrice(price) {
@@ -292,11 +292,11 @@ function filterByPrice(price) {
 app.get('/products/filter/price', (req, res) => {
   let price = parseFloat(req.query.price);
   let filteredProducts = filterByPrice(price);
-  res.json(filteredProducts);
+  res.json({products:filteredProducts});
 });
 
 app.get('/products', (req, res) => {
-  res.json(products);
+  res.json({products:products});
 });
 
 app.listen(port, () => {
